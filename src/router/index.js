@@ -5,11 +5,13 @@ import Category from '../pages/Category/Category.vue'
 import Cart from '../pages/Cart/Cart.vue'
 import Login from '../pages/Login/Login.vue'
 import Register from '../pages/Register/Register.vue'
+import CategoryBrand from '../pages/Category/CategoryBrand/CategoryBrand.vue'
+import CategoryClassify from '../pages/Category/CategoryClassify/CategoryClassify.vue'
 
 Vue.use(VueRouter)
 
 export default new VueRouter({
-  mode: 'history',
+  /* mode: 'history', */
   routes: [
     {
       path: '/',
@@ -21,7 +23,21 @@ export default new VueRouter({
     },
     {
       path: '/category',
-      component: Category
+      component: Category,
+      children: [
+        {
+          path: '/category/classify',
+          component: CategoryClassify
+        },
+        {
+          path: '/category/brand',
+          component: CategoryBrand
+        },
+        {
+          path: '',
+          redirect: '/category/classify'
+        }
+      ]
     },
     {
       path: '/cart',

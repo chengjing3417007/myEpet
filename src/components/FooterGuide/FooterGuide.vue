@@ -6,7 +6,7 @@
         </span>
         <span>首页</span>
       </li>
-      <li class="footerLi"  :class="{on:'/category'===$route.path}" @click="goto('/category')">
+      <li class="footerLi"  :class="{on:'/category/classify'===$route.path || '/category/brand'===$route.path}" @click="goto('/category')">
         <span class="item_icon">
           <i class="iconfont icon-iconfontcategory"></i>
         </span>
@@ -47,6 +47,7 @@ export default {
   bottom 0
   width 100%
   height 55px
+  background #ffffff
   .footerLi
     float left
     width 25%
