@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="box">
     <div class="categoryHeader">
       <div class="tab">
           <div class="textWrapper">
@@ -17,7 +17,9 @@
           </div>
       </div>
     </div>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
@@ -27,7 +29,7 @@ export default {}
 
 <style lang="stylus" rel="stylesheet/stylus">
 @import "../../common/stylus/mixins.styl"
-div
+.box
   height 100%
   .categoryHeader
     width 100%
@@ -51,12 +53,15 @@ div
         display flex
         justify-content center
         span
-          margin-right 5px
+          margin-right 10px
           a
             font-size 13px
             font-weight 700
             line-height 40px
             color #000
+          & .router-link-active
+            color red
+            border-bottom 1px solid red
       .search
         width 15%
         height 100%

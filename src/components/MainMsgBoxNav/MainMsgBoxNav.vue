@@ -15,7 +15,6 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   div
-    width 100%
   .title
     margin 0 aotu
     width 95%

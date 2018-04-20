@@ -1,5 +1,5 @@
-import {RECIEVE_MAINFO, RECIEVE_MAINCAROUSEL, RECIEVE_CATEGORY, RECIEVE_BRANDLIST} from './mutation-types'
-import {reqMain, reqCarousel, reqCategory, reqBrand} from '../api'
+import {RECIEVE_MAINFO, RECIEVE_MAINCAROUSEL, RECIEVE_CATEGORY, RECIEVE_BRANDLIST, RECIEVE_ALLBRAND} from './mutation-types'
+import {reqMain, reqCarousel, reqCategory, reqBrand, reqAllbrand} from '../api'
 
 export default {
   // 异步获取mainInfo
@@ -32,6 +32,15 @@ export default {
     if (result.code === 0) {
       const brandList = result.data.brand
       commit(RECIEVE_BRANDLIST, {brandList})
+    }
+  },
+  // 异步获取全部列表
+  async getAllbrand ({commit}, callback) {
+    const result = await reqAllbrand()
+    if (result.code === 0) {
+      const allbrand = result.data.brand
+      commit(RECIEVE_ALLBRAND, {allbrand})
+      callback && callback()
     }
   }
 }

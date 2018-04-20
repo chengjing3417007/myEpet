@@ -5,20 +5,20 @@
         <div class="brandContent">
           <div class="title">{{brand.title}}</div>
           <!--图片的ul-->
-            <div class="brandImgs">
+          <div class="brandImgs">
             <!--图片的li-->
-              <div class="imgLi" :key="index" v-for="(i, index) in brand.list">
-                <div class="imgBorder">
-                  <img :src="i.logo" alt="">
-                </div>
-                <span class="s1">{{i.name}}</span>
-                <span class="s2">{{i.address}}</span>
+            <div class="imgLi" :key="index" v-for="(i, index) in brand.list">
+              <div class="imgBorder">
+                <img :src="i.logo" alt="">
               </div>
+              <span class="s1">{{i.name}}</span>
+              <span class="s2">{{i.address}}</span>
+            </div>
           </div>
         </div>
       </li>
     </ul>
-    <div class="line"></div>
+    <div class="all" @click="goto('/all')">全部</div>
   </div>
 </template>
 
@@ -32,9 +32,15 @@ export default {
   computed: {
     ...mapState(['brandList'])
   },
+  methods: {
+    goto (path) {
+      this.$router.push(path)
+    }
+  },
   watch: {
     brandList (value) {
       this.$nextTick(() => {
+        /* eslint-disable no-new */
         new BScroll('.wrapper', {
           click: true,
           scrollY: true
@@ -47,6 +53,8 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
 .wrapper
+  height 100%
+  padding-bottom -60px
   .brangUl
     li
       width 100%
@@ -63,9 +71,10 @@ export default {
           display flex
           flex-direction row
           flex-wrap wrap
-          justify-content space-around
+          //justify-content space-around
           .imgLi
-            width 122px
+            //width 122px
+            width 33.3333%
             height 107px
             display flex
             align-items center
@@ -87,11 +96,20 @@ export default {
               font-size 13px
               color #333333
               margin 4px 0px
+              text-align center
             .s2
               font-size 12px
               color #999
-  .line
-    width 100%
-    height 60px
-    background #eeeeee
+  .all
+    position fixed
+    right 10px
+    bottom 65px
+    width 40px
+    height 40px
+    border-radius 50%
+    text-align center
+    line-height 40px
+    font-size 12px
+    color #fff
+    background #666
 </style>

@@ -13,7 +13,7 @@
           <li :key="index" v-for="(categoryBig,index) in categoryList[flag].cate_list">
             <!--标题-->
             <div class="title">{{categoryBig.title}}</div>
-            <div class="contentImg"><!--ul-->                                 <!--计算属性-->
+            <div class="contentImg"><!--ul-->
               <div class="item" :key="index" v-for="(categorySmall, index) in categoryBig.list">
                 <img :class="categorySmall.photo ? 'isQita' : 'isPinpai'" :src="categorySmall.photo || categorySmall.logo" alt="">
                 <span>{{categorySmall.name}}</span>
@@ -49,12 +49,15 @@ export default {
         new BScroll('.categoryBodyLeft', {
           click: true
         })
+        new BScroll('.categoryBodyRight', {
+          click: true,
+          scrollY: true
+        })
       })
     }
   },
   methods: {
     changeItem (index) {
-      console.log(this)
       // this.targetItemList = this.categoryList[index].cate_list
       this.flag = index
     }
@@ -65,10 +68,8 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
 @import "../../../common/stylus/mixins.styl"
 div
-  background #ffffff
   .categoryBody
     //background #F3F4F5
-    background #ffffff
     width 100%
     height 100%
     z-index -2
@@ -76,12 +77,13 @@ div
       position fixed
       top 40px
       left 0
-      width 70px
+      //width 70px
+      width 18.7%
       height 86%
       border-right 5px solid #F3F4F5
       .lfetListNav
         width 92%
-        z-index -20
+        // z-index -20
         li
           width 70px
           height 50px
@@ -106,14 +108,15 @@ div
           & .on
             color red
     .categoryBodyRight
-      width 100%
+      //width 100%
+      width 81.3%
+      margin-left 18.7%
       height 86%
       .rightListNav
         display flex
         flex-direction column
         width 100%
         flex-wrap wrap
-        margin-left 70px
         margin-top 40px
         li
           border-top 2px solid #F3F4F5
@@ -130,7 +133,7 @@ div
             flex-direction row
             flex-wrap wrap
             .item //相当于li
-              width 27%
+              width 33.3%
               height 117px
               display flex
               flex-direction column

@@ -7,6 +7,7 @@ import Login from '../pages/Login/Login.vue'
 import Register from '../pages/Register/Register.vue'
 import CategoryBrand from '../pages/Category/CategoryBrand/CategoryBrand.vue'
 import CategoryClassify from '../pages/Category/CategoryClassify/CategoryClassify.vue'
+import All from '../pages/All/All.vue'
 
 Vue.use(VueRouter)
 
@@ -15,11 +16,13 @@ export default new VueRouter({
   routes: [
     {
       path: '/',
-      redirect: '/main'
+      redirect: '/main',
+      meta: {showFooter: true}
     },
     {
       path: '/main',
-      component: Main
+      component: Main,
+      meta: {showFooter: true}
     },
     {
       path: '/category',
@@ -27,11 +30,13 @@ export default new VueRouter({
       children: [
         {
           path: '/category/classify',
-          component: CategoryClassify
+          component: CategoryClassify,
+          meta: {showFooter: true}
         },
         {
           path: '/category/brand',
-          component: CategoryBrand
+          component: CategoryBrand,
+          meta: {showFooter: true}
         },
         {
           path: '',
@@ -49,7 +54,12 @@ export default new VueRouter({
     },
     {
       path: '/register',
-      component: Register
+      component: Register,
+      meta: {showFooter: true}
+    },
+    {
+      path: '/all',
+      component: All
     }
   ]
 })

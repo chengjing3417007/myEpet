@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     computedArr () {
-      console.log(this.AdDisData.filter(item => (item.index > 20 && item.type_name === '通用广告模板' )))
+      // console.log(this.AdDisData.filter(item => (item.index > 20 && item.type_name === '通用广告模板' )))
       return this.AdDisData.filter(item => (item.index > 20 && item.type_name === '通用广告模板' ))
     }
   }

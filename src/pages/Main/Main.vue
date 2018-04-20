@@ -238,8 +238,8 @@ export default {
     width 100%
     height 100%
     .main_header
-      position fixed
       z-index 3
+      position fixed
       width 100%
       // height 150px
       background #ffffff
@@ -312,6 +312,7 @@ export default {
               padding-bottom 8px
     .main_contentWapper
       height 100%
+      background transparent
       /*padding-bottom 55px*/
       .main_content
         width 100%
